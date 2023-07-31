@@ -1,0 +1,48 @@
+{% load i18n static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Working Arena</title>
+    </head>
+    <body>
+        <h1 align="center">WORK ARENA</h1>
+        {% if user.is_authenticated %}
+            
+        <h2 align="right">
+            <a href="/admin/">Library Administration</a>
+        </h2>
+        <h3>authenticated 🙂</h3>
+        <form action="{% url 'library:Work_area' %}" id="num_input" method="get">
+            {% csrf_token%}
+            <fieldset ">
+                <legend align="right">Assign Book</legend>
+                <label for="stu_roll">Student Roll: </label>
+                <input type="text" id="stu_roll" name="stu_roll"/>
+                <br/>
+                <br/>
+                <label for="bk_id">Book Id: </label>
+                <input type="text" id="bk_id" name="bk_id"/>
+                <br/>
+                <br/>
+                <label for="dt_asgn">date of assigning book:</label>
+                <input type="date" id = "dt_asgn" value="dt_asgn"/>
+                <br/>
+                <br/>
+                <label for="dt_retr">last date of receiving book: </label>
+                <input type="date" id="dt_retr" value="dt_retr"/>
+                <br/>
+                <br/>
+                <input type="submit" value="assign"/>
+            </fieldset>
+        </form>
+        {% else %}
+            
+        <h2 align="right">
+            <a href="/admin/">Login To Work</a>
+        </h2>
+        <h3>authentication is gone 😒</h3>
+        {% endif %}
+    
+    </body>
+</html>
